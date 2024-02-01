@@ -5,8 +5,11 @@ function chargerClasse($classe)
         require "./src/Controllers/" . $classe . ".Class.php";
     else if (file_exists("./src/Models/" . $classe . ".Class.php"))
         require "./src/Models/" . $classe . ".Class.php";
+    else if (file_exists("./src/Services/" . $classe . ".Class.php"))
+        require "./src/Services/" . $classe . ".Class.php";
 }
 spl_autoload_register('chargerClasse');
+
 
 // Récupération des données pour pouvoir se connecter
 Parametre::getConfig();
@@ -14,13 +17,16 @@ Parametre::getConfig();
 // Connexion
 DbConnect::init();
 
-// Test création d'un objet en bdd
 $b = new Book([
-    "_title" => "test",
-    "_author" => "arnaud",
-    "_published_year" => 2024,
-    "_genre" => "moi"
+    "idBook" => 0,
+    "title" => "test",
+    "author" => "moi",
+    "published_year" => 2024,
+    "genre" => "oui"
 ]);
+
+
 var_dump($b);
 
-BookManager::create($b);
+
+BookManager::create("Book", $b);
