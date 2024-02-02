@@ -14,7 +14,7 @@ class Books
     /**
      * Get the value of _idBook
      */
-    public function getiIdBook()
+    public function getIdBook()
     {
         return $this->_idBook;
     }

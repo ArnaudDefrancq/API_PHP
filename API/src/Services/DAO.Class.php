@@ -50,4 +50,37 @@ class DAO
         // récup le dernier Id
         return $db->lastInsertId();
     }
+
+    /**
+     * Permet de modifier des données dans une BDD
+     *
+     * @param string $table nom de la table 
+     * @param object $newData objet modifier
+     * @return void
+     */
+    static public function update(object $newData)
+    {
+        $db = DbConnect::getDb();
+        $table = get_class($newData);
+        $allAttributs = $newData::getAttributs();
+        $req = '';
+
+        // prépare les paramètres
+        foreach ($allAttributs as $attributs) {
+            $methode = $newData->{'get' . ucfirst($attributs)}();
+            if ($methode !== null) {
+                $req .= $attributs . " = :" . $attributs . ", ";
+            }
+        }
+        $query = $db->prepare("UPDATE " . $table . " SET " . substr($req, 0, -2) . " WHERE " . $allAttributs[0] . " = :" . $allAttributs[0]);
+
+        // on prépare les bind
+        foreach ($allAttributs as $attributs) {
+            $methode = $newData->{'get' . ucfirst($attributs)}();
+            if ($methode !== null) {
+                $query->bindValue(':' . $attributs, $methode);
+            }
+        }
+        $query->execute();
+    }
 }
