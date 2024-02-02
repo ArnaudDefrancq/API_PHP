@@ -34,4 +34,15 @@ class BookManager
     {
         DAO::delete($object);
     }
+
+    /**
+     * Permet de sélectionner un objet grace à son ID
+     *
+     * @param int $id
+     * @return object
+     */
+    static public function findById(string $table, int $id)
+    {
+        DAO::select($table, null, ["id.$table" => $id]);
+    }
 }

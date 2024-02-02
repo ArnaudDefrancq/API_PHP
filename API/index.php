@@ -45,3 +45,5 @@ DbConnect::init();
 //     "genre" => "oui"
 // ]);
 // BookManager::delete($newB);
+
+BookManager::findById("Book", 1);
