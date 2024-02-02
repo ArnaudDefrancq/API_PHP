@@ -7,8 +7,8 @@ class BookManager
      * @param Book $b
      * @return void
      */
-    static public function create(string $class, object $object)
+    static public function create(object $object)
     {
-        DAO::create($class, $object);
+        DAO::create($object);
     }
 }

@@ -17,7 +17,7 @@ Parametre::getConfig();
 // Connexion
 DbConnect::init();
 
-$b = new Book([
+$b = new Books([
     "idBook" => 0,
     "title" => "test",
     "author" => "moi",
@@ -25,8 +25,4 @@ $b = new Book([
     "genre" => "oui"
 ]);
 
-
-var_dump($b);
-
-
-BookManager::create("Book", $b);
+BookManager::create($b);

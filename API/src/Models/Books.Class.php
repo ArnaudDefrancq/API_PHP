@@ -1,5 +1,5 @@
 <?php
-class Book
+class Books
 {
     /***Attributs***/
     private $_idBook;
