@@ -22,4 +22,16 @@ class BookManager
     {
         DAO::update($object);
     }
+
+    /**
+     * Supprime une personne en base de donnée
+     *
+     * @param string $table
+     * @param object $object
+     * @return void
+     */
+    static public function delete(object $object)
+    {
+        DAO::delete($object);
+    }
 }

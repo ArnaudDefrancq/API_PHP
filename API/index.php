@@ -16,7 +16,7 @@ Parametre::getConfig();
 
 // Connexion
 DbConnect::init();
-
+// OK
 // $b = new Books([
 //     "idBook" => 0,
 //     "title" => "test",
@@ -24,15 +24,24 @@ DbConnect::init();
 //     "published_year" => 2024,
 //     "genre" => "oui"
 // ]);
-
 // BookManager::create($b);
 
-$newB = new Books([
-    "idBook" => 6,
-    "title" => "Chengment",
-    "author" => "moi",
-    "published_year" => 2023,
-    "genre" => "oui"
-]);
+// OK
+// $newB = new Books([
+//     "idBook" => 6,
+//     "title" => "Chengment",
+//     "author" => "moi",
+//     "published_year" => 2023,
+//     "genre" => "oui"
+// ]);
+// BookManager::update($newB);
 
-BookManager::update($newB);
+// OK
+// $newB = new Books([
+//     "idBook" => 6,
+//     "title" => "Chengment",
+//     "author" => "moi",
+//     "published_year" => 2023,
+//     "genre" => "oui"
+// ]);
+// BookManager::delete($newB);

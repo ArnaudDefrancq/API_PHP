@@ -83,4 +83,22 @@ class DAO
         }
         $query->execute();
     }
+
+    /**
+     * Permet de supprimer une ligne dans la base de donnée avec l'ID de la ligne
+     *
+     * @param string $table
+     * @param object $newData
+     * @return void
+     */
+    static public function delete(object $newData)
+    {
+        $db = DbConnect::getDb();
+        $table = get_class($newData);
+        $allAttributs = $newData::getAttributs();
+
+        $query = $db->prepare("DELETE FROM " . $table . " WHERE " . $allAttributs[0] . " = :" . $allAttributs[0]);
+        $query->bindValue(':' . $allAttributs[0], $newData->{'get' . ucfirst($allAttributs[0])}());
+        $query->execute();
+    }
 }
