@@ -1,0 +1,22 @@
+{
+    "name": "59011-82-04/cours-grafikart",
+    "autoload": {
+        "psr-4": {
+            "CoursGrafikart\\": "src/Frameworke"
+        }
+    },
+    "authors": [
+        {
+            "name": "ArnaudDefrancq",
+            "email": "arnaud.defrancq@laposte.net"
+        }
+    ],
+    "require-dev": {
+        "phpunit/phpunit": "^9.6"
+    },
+    "require": {
+        "psr/http-message": "^1.0",
+        "guzzlehttp/psr7": "^2.6",
+        "http-interop/response-sender": "^1.0"
+    }
+}
