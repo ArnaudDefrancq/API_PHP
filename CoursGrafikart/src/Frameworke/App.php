@@ -8,6 +8,20 @@ use Psr\Http\Message\ResponseInterface;
 
 class App
 {
+    private $modules = [];
+
+    /**
+     * Undocumented function
+     *
+     * @param array string[] $modules Liste des modules à charger
+     */
+    public function __construct(array $modules = [])
+    {
+        foreach ($modules as $module) {
+            $this->modules[] = new $module();
+        }
+    }
+
     public function run(ServerRequestInterface $request): ResponseInterface
     {
         $uri = $request->getUri()->getPath();
