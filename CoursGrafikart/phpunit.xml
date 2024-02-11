@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit boostrap="./vendor/autoload.php">
+    <testsuites>
+        <testsuite name="CoursGrafikart">
+            <directory>tests</directory>
+        </testsuite>
+
+
+    </testsuites>
+</phpunit>
