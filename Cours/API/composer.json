@@ -1,0 +1,16 @@
+{
+    "name": "toyger/api",
+    "autoload": {
+        "psr-4": {
+            "Toyger\\Api\\": "app/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Arnaud"
+        }
+    ],
+    "require": {
+        "klein/klein": "^2.1"
+    }
+}
