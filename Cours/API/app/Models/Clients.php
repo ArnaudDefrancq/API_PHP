@@ -2,12 +2,13 @@
 
 namespace Toyger\Api\Models;
 
-class Client
+class Clients
 {
     private $_id;
     private $_nom;
     private $_email;
     private $_adresse;
+    private static $_attributes = ["id", "nom", "email", "adresse"];
 
     #region 
     public function getId()
@@ -48,6 +49,14 @@ class Client
     public function setAdresse($adresse)
     {
         $this->_adresse = $adresse;
+    }
+
+    /**
+     * Get the value of _attributes
+     */
+    public static function getAttributes()
+    {
+        return self::$_attributes;
     }
 
     #endregion

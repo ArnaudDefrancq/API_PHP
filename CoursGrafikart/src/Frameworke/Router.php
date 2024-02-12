@@ -2,14 +2,23 @@
 
 namespace CoursGrafikart;
 
+use CoursGrafikart\Router\Route;
 use Psr\Http\Message\RequestInterface;
-
+use Zend\Expressive\Router\FastRouteRouter;
+use Zend\Expressive\Router\Route as ZendRoute;
+use Zend\Expressive\Router\MiddlewareDecorator;
 
 /**
  * Register and match routes
  */
 class Router
 {
+    private $router;
+
+    public function __construct()
+    {
+        $this->router = new FastRouteRouter();
+    }
     /**
      * Undocumented function
      *
@@ -20,6 +29,7 @@ class Router
      */
     public function get(string $path, callable $collable, string $name)
     {
+        $this->router->addRoute(new ZendRoute($path, $collable, ["GET"], $name));
     }
 
     /**
@@ -30,5 +40,7 @@ class Router
      */
     public function match(RequestInterface $request): ?Route
     {
+        $result = $this->router->match($request);
+        return new Route($result->getMatchedRouteName(), $result->getMatchedMiddleware(), $result->getMatchedParams());
     }
 }
