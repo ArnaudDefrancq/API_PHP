@@ -11,14 +11,15 @@ class ClientsController
         return DAO::select("clients", ["id", "nom", "email", "adresse"],  null, null, null, false);
     }
 
-    // public static function getClient(int $id)
-    // {
+    public static function getClients(int $id)
+    {
+        return DAO::select("clients", ["id", "nom", "email", "adresse"], ["id" => $id]);
+    }
 
-    // }
-
-    // public static function createClient()
-    // {
-    // }
+    public static function createClient(object $object)
+    {
+        return DAO::create($object);
+    }
 
     // public static function updateClient(int $id, Client $object)
     // {

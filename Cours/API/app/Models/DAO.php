@@ -4,11 +4,41 @@ namespace Toyger\Api\Models;
 
 use Toyger\Api\Models\ConnectBDD;
 use PDO;
-use Toyger\Api\Models;
 
 
 class DAO
 {
+    public static function create($obj)
+    {
+        $db = ConnectBDD::getDb();
+        $class = get_class($obj);
+        $colonnes = $class::getAttributes();
+        $requ = "INSERT INTO " . $class . "(";
+        $values = "";
+        // on commence à 1 pour ne pas renseigner l'id
+        for ($i = 1; $i < count($colonnes); $i++) {
+            $methode = "get" . ucfirst($colonnes[$i]);
+            if ($obj->$methode() !== null) {
+                $requ .= $colonnes[$i] . ",";
+                $values .= ":" . $colonnes[$i] . ",";
+            }
+        }
+        // on enlève la dernière ,
+        $requ = substr($requ, 0, -1);
+        $values = substr($values, 0,  -1);
+        $requ .= ") VALUES (" . $values . ")";
+        $q = $db->prepare($requ);
+
+        //on fait les bind
+        for ($i = 1; $i < count($colonnes); $i++) {
+            $methode = "get" . ucfirst($colonnes[$i]);
+            if ($obj->$methode() !== null)
+                $q->bindValue(":" . $colonnes[$i], $obj->$methode());
+        }
+        $q->execute();
+        return $db->lastInsertId();
+    }
+
     /**
      * permet de faire un select paramétré sur une table
      * 
