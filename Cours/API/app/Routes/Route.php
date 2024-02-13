@@ -99,7 +99,30 @@ $app->respond('PUT', '/api/[:name]/update/[:id]', function ($request) {
 
     return new Response("modifier", 200, []);
 });
-$app->respond('DELETE', '[:table]', function ($request) {
+$app->respond('DELETE', '/api/[:name]/delete/[:id]', function ($request) {
+    // Récup du nom + Id
+    $tableName = $request->name;
+    $id = intval($request->id);
+    $controllerName = 'Toyger\Api\Controllers\\' . ucfirst($tableName) . 'Controller';
+
+    // Check si on a bien le controller
+    if (!class_exists($controllerName)) {
+        return new Response("Table non trouvée", 503, []);
+    }
+
+    // On check si il est en base de donnée
+    $controller = new $controllerName();
+    $methodGet = 'get' . ucfirst($tableName);
+    $oneItem = $controller->$methodGet($id);
+
+    if ($oneItem == false) {
+        return new Response("Rien trouvé", 404, []);
+    }
+
+    // $methodDelete = 'delete' . ucfirst($tableName);
+    // $controller->$methodDelete($oneItem);
+
+    // return new Response("delete", 200, []);
 });
 
 return $app;

@@ -56,17 +56,26 @@ class DAO
         $requ = substr($requ, 0, strlen($requ) - 1);
         $requ .= " WHERE " . $colonnes[0] . "=:" . $colonnes[0];
 
-        var_dump($requ);
-
         $q = $db->prepare($requ);
 
         for ($i = 0; $i < count($colonnes); $i++) {
             $methode = "get" . ucfirst($colonnes[$i]);
             $q->bindValue(":" . $colonnes[$i], $obj->$methode());
         }
-        var_dump($q->execute());
+
         return $q->execute();
     }
+
+    public static function delete($obj)
+    {
+        $db = ConnectBDD::getDb();
+        $class = get_class($obj);
+        $table = explode("\\",  get_class($obj))[3];
+        $colonnes = $class::getAttributes();
+        $methode = "get" . ucfirst($colonnes[0]);
+        return $db->query("DELETE FROM " . $table . " WHERE " . $colonnes[0] . " = " . $obj->$methode());
+    }
+
 
     /**
      * permet de faire un select paramétré sur une table

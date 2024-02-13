@@ -58,7 +58,9 @@ class ClientsController
         return DAO::update($obj);
     }
 
-    // public static function deleteClient(int $id)
-    // {
-    // }
+    public static function deleteClients(object $object)
+    {
+
+        return DAO::delete($object);
+    }
 }
