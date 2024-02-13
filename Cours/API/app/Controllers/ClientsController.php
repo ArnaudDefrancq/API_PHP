@@ -16,7 +16,7 @@ class ClientsController
         return DAO::select("clients", ["id", "nom", "email", "adresse"], ["id" => $id]);
     }
 
-    public static function createClient(object $object)
+    public static function createClients(object $object)
     {
         return DAO::create($object);
     }

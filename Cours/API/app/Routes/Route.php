@@ -48,7 +48,29 @@ $app->respond('GET', '/api/[:name]/[:id]', function ($request) {
     }
 });
 
-$app->respond('POST', 'api/[:name]/[:id]/create', function ($request) {
+$app->respond('POST', '/api/[:name]/create', function ($request) {
+    $tableName = $request->name;
+    $objectName = 'Toyger\Api\Models\\' . ucfirst($tableName);
+    $data = json_decode($request->body(), true);
+    $newObject = new $objectName($data);
+
+    $controllerName = 'Toyger\Api\Controllers\\' . ucfirst($tableName) . 'Controller';
+
+    if (class_exists($controllerName)) {
+        $controller = new $controllerName();
+        $method = 'create' . ucfirst($tableName);
+        $createOne = $controller->$method($newObject);
+
+        if ($createOne !== false) {
+            header('Content-Type: application/json');
+            echo $createOne;
+        } else {
+            http_response_code(500);
+            echo json_encode(array("message" => "Erreur lors de la création."));
+        }
+    } else {
+        echo "Table non trouvée";
+    }
 });
 $app->respond('PUT', '[:table]', function ($request) {
 });

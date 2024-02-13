@@ -12,8 +12,9 @@ class DAO
     {
         $db = ConnectBDD::getDb();
         $class = get_class($obj);
+        $table = explode("\\",  get_class($obj))[3];
         $colonnes = $class::getAttributes();
-        $requ = "INSERT INTO " . $class . "(";
+        $requ = "INSERT INTO " . $table . "(";
         $values = "";
         // on commence à 1 pour ne pas renseigner l'id
         for ($i = 1; $i < count($colonnes); $i++) {
