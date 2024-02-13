@@ -40,6 +40,29 @@ class DAO
         return $db->lastInsertId();
     }
 
+    public static function update($obj)
+    {
+        $db = ConnectBDD::getDb();
+        $class = get_class($obj);
+        $table = explode("\\",  get_class($obj))[3];
+        $colonnes = $class::getAttributes();
+        $requ = "UPDATE " . $table . " SET ";
+
+        for ($i = 1; $i < count($colonnes); $i++) {
+            $requ .= $colonnes[$i] . "=:" . $colonnes[$i] . ",";
+        }
+        $requ = substr($requ, 0, strlen($requ) - 1);
+        $requ .= " WHERE " . $colonnes[0] . "=:" . $colonnes[0];
+
+        $q = $db->prepare($requ);
+
+        for ($i = 0; $i < count($colonnes); $i++) {
+            $methode = "get" . ucfirst($colonnes[$i]);
+            $q->bindValue(":" . $colonnes[$i], $obj->$methode());
+        }
+        return $q->execute();
+    }
+
     /**
      * permet de faire un select paramétré sur une table
      * 
@@ -88,7 +111,6 @@ class DAO
             $requete .= self::setConditions($conditions);
             $requete .= self::setOrderBy($orderBy, $requete);
             $requete .= $limit != null ? " LIMIT " . $limit : "";
-
             if ($debug) {
                 var_dump($requete);
             }

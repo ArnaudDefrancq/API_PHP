@@ -14,6 +14,4 @@ ConnectBDD::init();
 
 header('Content-Type: application/json');
 
-var_dump('Ceci est mon API !');
-
 $app->dispatch();

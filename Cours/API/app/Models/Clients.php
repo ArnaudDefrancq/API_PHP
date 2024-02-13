@@ -4,21 +4,21 @@ namespace Toyger\Api\Models;
 
 class Clients
 {
-    private $_id;
+    private $_idClient;
     private $_nom;
     private $_email;
     private $_adresse;
-    private static $_attributes = ["id", "nom", "email", "adresse"];
+    private static $_attributes = ["idClient", "nom", "email", "adresse"];
 
     #region 
-    public function getId()
+    public function getIdClient()
     {
-        return $this->_id;
+        return $this->_idClient;
     }
 
-    public function setId($id)
+    public function setIdClient($id)
     {
-        $this->_id = $id;
+        $this->_idClient = $id;
     }
 
     public function getNom()
