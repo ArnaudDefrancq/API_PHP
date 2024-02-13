@@ -19,10 +19,12 @@ class DAO
         // on commence à 1 pour ne pas renseigner l'id
         for ($i = 1; $i < count($colonnes); $i++) {
             $methode = "get" . ucfirst($colonnes[$i]);
-            if ($obj->$methode() !== null) {
-                $requ .= $colonnes[$i] . ",";
-                $values .= ":" . $colonnes[$i] . ",";
+
+            if ($obj->$methode() == null) {
+                return false;
             }
+            $requ .= $colonnes[$i] . ",";
+            $values .= ":" . $colonnes[$i] . ",";
         }
         // on enlève la dernière ,
         $requ = substr($requ, 0, -1);
