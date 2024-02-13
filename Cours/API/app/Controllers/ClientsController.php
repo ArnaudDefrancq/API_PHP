@@ -49,9 +49,13 @@ class ClientsController
         return $new;
     }
 
-    public static function updateClient(object $object)
+    public static function updateClients($request, $tableName)
     {
-        return DAO::update($object);
+        $class = 'Toyger\Api\Models\\' . $tableName;
+        $data = json_decode($request->body(), true);
+        $obj = new $class($data);
+
+        return DAO::update($obj);
     }
 
     // public static function deleteClient(int $id)

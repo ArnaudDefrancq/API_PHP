@@ -56,12 +56,15 @@ class DAO
         $requ = substr($requ, 0, strlen($requ) - 1);
         $requ .= " WHERE " . $colonnes[0] . "=:" . $colonnes[0];
 
+        var_dump($requ);
+
         $q = $db->prepare($requ);
 
         for ($i = 0; $i < count($colonnes); $i++) {
             $methode = "get" . ucfirst($colonnes[$i]);
             $q->bindValue(":" . $colonnes[$i], $obj->$methode());
         }
+        var_dump($q->execute());
         return $q->execute();
     }
 
