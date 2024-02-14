@@ -1,6 +1,7 @@
 Ceci est une API que j'ai réalisé en PHP afin de m'exercer. L'objectif était de faire un API avec le modèle MVC et qu'elle soit le plus dynamique possible.
 
 Version V1:
+
 Avant de tester ces routes, il faut d'abord lancer un serveur:
   - cd api
   - php -S localhost:8000 -d display_errors=1
