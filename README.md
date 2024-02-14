@@ -13,12 +13,15 @@ Pour la table Clients:
   -  POST: http://localhost:8000/api/clients/create
   -  PUT: http://localhost:8000/api/clients/update/:id
   -  DELETE: http://localhost:8000/api/clients/delete/:id
+    
 Pour la table Produits:
   - GET: http://localhost:8000/api/produits
   - GET: http://localhost:8000/api/produits/:id
   - POST: http://localhost:8000/api/produits/create
   - PUT: http://localhost:8000/api/produits/update/:id
   - DELETE: http://localhost:8000/api/produits/delete/:id
+
+
 Pour la table Commandes:
   - GET: http://localhost:8000/api/commandes
   - GET: http://localhost:8000/api/commandes/:id
