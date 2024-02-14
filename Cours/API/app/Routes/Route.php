@@ -2,7 +2,6 @@
 
 namespace Toyger\Api\Routes;
 
-use Exception;
 use Klein\Klein;
 use Klein\Response;
 
@@ -122,7 +121,7 @@ $app->respond('DELETE', '/api/[:name]/delete/[:id]', function ($request) {
     $methodDelete = 'delete' . ucfirst($tableName);
     $controller->$methodDelete($id, $tableName);
 
-    // return new Response("delete", 200, []);
+    return new Response("delete", 200, []);
 });
 
 return $app;

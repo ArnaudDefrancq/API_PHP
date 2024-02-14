@@ -114,6 +114,7 @@ class DAO
     {
         // INJECTION SQL : verif ;
         $verif = $table . json_encode($colonnes) . json_encode($conditions) . json_encode($orderBy) . $limit;
+        var_dump($verif);
         if (!strpos($verif, ";")) {
             $classe = ucfirst($table);
             $liste = [];

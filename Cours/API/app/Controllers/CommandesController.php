@@ -4,11 +4,12 @@ namespace Toyger\Api\Controllers;
 
 use Toyger\Api\Models\DAO;
 
-class ClientsController
+
+class CommandesController
 {
     public static function getList()
     {
-        $list = DAO::select("clients", ["idClient", "nom", "email", "adresse"],  null, null, null, false);
+        $list = DAO::select("commandes", ["idCommande", "id_client", "id_produit", "quantite", "date_commande"],  null, null, null, false);
 
         if ($list == false) {
             return false;
@@ -17,9 +18,9 @@ class ClientsController
         return $list;
     }
 
-    public static function getClients(int $id)
+    public static function getCommandes(int $id)
     {
-        $oneItem = DAO::select("clients", ["idClient", "nom", "email", "adresse"], ["idClient" => $id]);
+        $oneItem = DAO::select("commandes", ["idCommande", "id_client", "id_produit", "quantite", "date_commande"], ["idCommande" => $id]);
 
         if ($oneItem == false) {
             return false;
@@ -28,7 +29,7 @@ class ClientsController
         return $oneItem;
     }
 
-    public static function createClients($request, $tableName)
+    public static function createCommandes($request, $tableName)
     {
         $class = 'Toyger\Api\Models\\' . $tableName;
         $data = json_decode($request->body(), true);
@@ -43,7 +44,7 @@ class ClientsController
         return $new;
     }
 
-    public static function updateClients($request, $tableName)
+    public static function updateCommandes($request, $tableName)
     {
         $class = 'Toyger\Api\Models\\' . $tableName;
         $data = json_decode($request->body(), true);
@@ -52,7 +53,7 @@ class ClientsController
         return DAO::update($obj);
     }
 
-    public static function deleteClients(int $id, string $tableName)
+    public static function deleteCommandes(int $id, string $tableName)
     {
         $class = 'Toyger\Api\Models\\' . $tableName;
         $obj = new $class();
