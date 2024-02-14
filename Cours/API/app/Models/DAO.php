@@ -66,14 +66,13 @@ class DAO
         return $q->execute();
     }
 
-    public static function delete($obj)
+    public static function delete(int $id, object $table)
     {
         $db = ConnectBDD::getDb();
-        $class = get_class($obj);
-        $table = explode("\\",  get_class($obj))[3];
+        $class = get_class($table);
+        $table = explode("\\",  get_class($table))[3];
         $colonnes = $class::getAttributes();
-        $methode = "get" . ucfirst($colonnes[0]);
-        return $db->query("DELETE FROM " . $table . " WHERE " . $colonnes[0] . " = " . $obj->$methode());
+        return $db->query("DELETE FROM " . $table . " WHERE " . $colonnes[0] . " = " . $id);
     }
 
 

@@ -10,6 +10,8 @@ use ReflectionProperty;
 use Toyger\Api\Models\DAO;
 use Toyger\Api\Tools\Security;
 
+use function PHPSTORM_META\type;
+
 class ClientsController
 {
     public static function getList()
@@ -58,9 +60,11 @@ class ClientsController
         return DAO::update($obj);
     }
 
-    public static function deleteClients(object $object)
+    public static function deleteClients(int $id, string $tableName)
     {
+        $class = 'Toyger\Api\Models\\' . $tableName;
+        $obj = new $class();
 
-        return DAO::delete($object);
+        return DAO::delete($id, $obj);
     }
 }

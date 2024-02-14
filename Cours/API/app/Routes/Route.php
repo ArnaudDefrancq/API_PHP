@@ -119,8 +119,8 @@ $app->respond('DELETE', '/api/[:name]/delete/[:id]', function ($request) {
         return new Response("Rien trouvé", 404, []);
     }
 
-    // $methodDelete = 'delete' . ucfirst($tableName);
-    // $controller->$methodDelete($oneItem);
+    $methodDelete = 'delete' . ucfirst($tableName);
+    $controller->$methodDelete($id, $tableName);
 
     // return new Response("delete", 200, []);
 });
