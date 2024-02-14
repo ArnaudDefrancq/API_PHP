@@ -7,6 +7,7 @@ Avant de tester ces routes, il faut d'abord lancer un serveur:
 Le script SQL de la base est dans le fichier SQL et comporte 3 entitées. C'est une base de donnée MySQL.
 
 Les différentes routes disponibles sont les suivantes : 
+
 Pour la table Clients: 
   -  GET: http://localhost:8000/api/clients
   -  GET: http://localhost:8000/api/clients/:id
