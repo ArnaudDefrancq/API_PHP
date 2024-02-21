@@ -2,7 +2,7 @@
     "database": {
         "host": "localhost",
         "port": "3306",
-        "dbname": "api_test",
+        "dbname": "api_test_v2",
         "username": "root",
         "password": "",
         "bdd": "mysql"
