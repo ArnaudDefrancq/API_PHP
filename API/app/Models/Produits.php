@@ -7,8 +7,10 @@ class Produits
     /***Attributs***/
     private $_idProduit;
     private $_nom;
+    private $_description;
     private $_prix;
-    private static $_attributes = ["idProduit", "nom", "prix"];
+    private $_categorie;
+    private static $_attributes = ["idProduit", "nom", "description", "prix", "categorie"];
 
     /***Accesseur***/
     #region
@@ -53,6 +55,26 @@ class Produits
     }
 
     /**
+     * Get the value of _description
+     */
+    public function getDescription()
+    {
+        return $this->_description;
+    }
+
+    /**
+     * Set the value of _description
+     *
+     * @return  self
+     */
+    public function setDescription($_description)
+    {
+        $this->_description = $_description;
+
+        return $this;
+    }
+
+    /**
      * Get the value of _prix
      */
     public function getPrix()
@@ -68,6 +90,26 @@ class Produits
     public function setPrix($_prix)
     {
         $this->_prix = $_prix;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of _categorie
+     */
+    public function getCategorie()
+    {
+        return $this->_categorie;
+    }
+
+    /**
+     * Set the value of _categorie
+     *
+     * @return  self
+     */
+    public function setCategorie($_categorie)
+    {
+        $this->_categorie = $_categorie;
 
         return $this;
     }

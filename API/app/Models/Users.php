@@ -2,23 +2,25 @@
 
 namespace Toyger\Api\Models;
 
-class Clients
+class Users
 {
-    private $_idClient;
+    private $_idUser;
     private $_nom;
+    private $_prenom;
     private $_email;
+    private $_password;
     private $_adresse;
-    private static $_attributes = ["idClient", "nom", "email", "adresse"];
+    private static $_attributes = ["idUser", "nom", "prenom", "email", "password", "adresse"];
 
     #region 
-    public function getIdClient()
+    public function getIdUser()
     {
-        return $this->_idClient;
+        return $this->_idUser;
     }
 
-    public function setIdClient($id)
+    public function setIdUser($id)
     {
-        $this->_idClient = $id;
+        $this->_idUser = $id;
     }
 
     public function getNom()
@@ -31,6 +33,26 @@ class Clients
         $this->_nom = $nom;
     }
 
+    /**
+     * Get the value of _prenom
+     */
+    public function getPrenom()
+    {
+        return $this->_prenom;
+    }
+
+    /**
+     * Set the value of _prenom
+     *
+     * @return  self
+     */
+    public function setPrenom($_prenom)
+    {
+        $this->_prenom = $_prenom;
+
+        return $this;
+    }
+
     public function getEmail()
     {
         return $this->_email;
@@ -39,6 +61,26 @@ class Clients
     public function setEmail($email)
     {
         $this->_email = $email;
+    }
+
+    /**
+     * Get the value of _password
+     */
+    public function getPassword()
+    {
+        return $this->_password;
+    }
+
+    /**
+     * Set the value of _password
+     *
+     * @return  self
+     */
+    public function setPassword($_password)
+    {
+        $this->_password = $_password;
+
+        return $this;
     }
 
     public function getAdresse()

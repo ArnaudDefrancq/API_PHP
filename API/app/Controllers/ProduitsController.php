@@ -9,7 +9,7 @@ class ProduitsController
 {
     public static function getList()
     {
-        $list = DAO::select("produits", ["idProduit", "nom", "prix"],  null, null, null, false);
+        $list = DAO::select("produits", ["idProduit", "nom", "description", "prix", "categorie"],  null, null, null, false);
 
         if ($list == false) {
             return false;
@@ -20,7 +20,7 @@ class ProduitsController
 
     public static function getProduits(int $id)
     {
-        $oneItem = DAO::select("produits", ["idProduit", "nom", "prix"], ["idProduit" => $id]);
+        $oneItem = DAO::select("produits", ["idProduit", "nom", "description", "prix", "categorie"], ["idProduit" => $id]);
 
         if ($oneItem == false) {
             return false;

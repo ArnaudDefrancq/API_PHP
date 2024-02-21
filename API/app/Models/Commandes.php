@@ -9,8 +9,7 @@ class Commandes
     private $_id_client;
     private $_id_produit;
     private $_quantite;
-    private $_date_commande;
-    private static $_attributes = ["idCommande", "id_client", "id_produit", "quantite", "date_commande"];
+    private static $_attributes = ["idCommande", "id_client", "id_produit", "quantite"];
 
     /***Accesseur***/
     #region
@@ -90,26 +89,6 @@ class Commandes
     public function setQuantite($_quantite)
     {
         $this->_quantite = $_quantite;
-
-        return $this;
-    }
-
-    /**
-     * Get the value of _dataCommande
-     */
-    public function getDate_commande()
-    {
-        return $this->_date_commande;
-    }
-
-    /**
-     * Set the value of _dataCommande
-     *
-     * @return  self
-     */
-    public function setDate_commande($_dateCommande)
-    {
-        $this->_date_commande = $_dateCommande;
 
         return $this;
     }
