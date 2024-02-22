@@ -1,8 +1,8 @@
 <?php
 
-namespace Toyger\Api\Controllers;
+namespace projetApi\Controllers;
 
-use Toyger\Api\Models\DAO;
+use projetApi\Models\DAO;
 
 
 class ProduitsController

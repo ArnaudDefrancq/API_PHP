@@ -1,8 +1,8 @@
 <?php
 
-namespace Toyger\Api\Controllers;
+namespace TprojetApi\Controllers;
 
-use Toyger\Api\Models\DAO;
+use projetApi\Models\DAO;
 
 class UsersController
 {
@@ -28,20 +28,20 @@ class UsersController
         return $oneItem;
     }
 
-    public static function createUsers($request, $tableName)
-    {
-        $class = 'Toyger\Api\Models\\' . $tableName;
-        $data = json_decode($request->body(), true);
-        $obj = new $class($data);
+    // public static function createUsers($request, $tableName)
+    // {
+    //     $class = 'Toyger\Api\Models\\' . $tableName;
+    //     $data = json_decode($request->body(), true);
+    //     $obj = new $class($data);
 
-        $new = DAO::create($obj);
+    //     $new = DAO::create($obj);
 
-        if ($new === false) {
-            return false;
-        }
+    //     if ($new === false) {
+    //         return false;
+    //     }
 
-        return $new;
-    }
+    //     return $new;
+    // }
 
     public static function updateUsers($request, $tableName)
     {

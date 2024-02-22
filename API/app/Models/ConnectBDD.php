@@ -1,10 +1,10 @@
 <?php
 
-namespace Toyger\Api\Models;
+namespace projetApi\Models;
 
 use Exception;
 use PDO;
-use Toyger\Api\Controllers\Parametre;
+use projetApi\Controllers\Parametre;
 
 
 class ConnectBDD

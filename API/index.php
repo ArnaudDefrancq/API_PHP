@@ -1,9 +1,7 @@
 <?php
 
-use Toyger\Api\Controllers\ClientsController;
-use Toyger\Api\Models\ConnectBDD;
-use Toyger\Api\Controllers\Parametre;
-use Toyger\Api\Models\Clients;
+use projetApi\Models\ConnectBDD;
+use projetApi\Controllers\Parametre;
 
 require "./vendor/autoload.php";
 require "./app/Routes/Route.php";

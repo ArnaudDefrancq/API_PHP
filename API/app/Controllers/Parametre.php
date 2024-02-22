@@ -1,6 +1,6 @@
 <?php
 
-namespace Toyger\Api\Controllers;
+namespace projetApi\Controllers;
 
 class Parametre
 {

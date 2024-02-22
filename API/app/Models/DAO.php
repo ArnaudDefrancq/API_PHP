@@ -1,8 +1,8 @@
 <?php
 
-namespace Toyger\Api\Models;
+namespace projetApi\Models;
 
-use Toyger\Api\Models\ConnectBDD;
+use projetApi\Models\ConnectBDD;
 use PDO;
 
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace Toyger\Api\Models;
+namespace projetApi\Models;
 
 class Produits
 {

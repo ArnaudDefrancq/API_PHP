@@ -2,7 +2,7 @@
     "name": "toyger/api",
     "autoload": {
         "psr-4": {
-            "Toyger\\Api\\": "app/"
+            "projetApi\\": "app/"
         }
     },
     "authors": [

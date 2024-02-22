@@ -124,4 +124,22 @@ $app->respond('DELETE', '/api/[:name]/delete/[:id]', function ($request) {
     return new Response("delete", 200, []);
 });
 
+// $app->respond('POST', '/api/auth/signup', function ($request) {
+//     $tableName = $request->name;
+
+//     $controllerName = 'Toyger\Api\Controllers\\' . ucfirst($tableName) . 'Controller';
+
+//     if (!class_exists($controllerName)) {
+//         return new Response("Table non trouvée", 503, []);
+//     }
+//     $controller = new $controllerName();
+//     $method = 'signUp';
+//     $create = $controller->$method($request, ucfirst($tableName));
+//     if ($create == false) {
+//         return new Response("Bad Request", 400, []);
+//     }
+
+//     return new Response($create, 201, []);
+// });
+
 return $app;
